@@ -2,7 +2,9 @@
 
 **Parametric 3D generator for structural Gridfinity parts** — columns, beams, floor decks, and bracing — designed for engineering-style layouts with the flexibility and modularity of the Gridfinity ecosystem.
 
-![GridfinityStructures Preview](docs/images/preview.png)
+![GridfinityStructures Preview](docs/images/preview.png)  
+
+![GridfinityStructure](https://yieldingdata.github.io/GridfinityStructure/)
 
 ---
 
