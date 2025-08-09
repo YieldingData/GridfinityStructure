@@ -4,7 +4,7 @@
 
 ![GridfinityStructures Preview](docs/images/preview.png)  
 
-![GridfinityStructure](https://yieldingdata.github.io/GridfinityStructure/)
+[GridfinityStructure](https://yieldingdata.github.io/GridfinityStructure/)
 
 ---
 
