@@ -27,62 +27,79 @@ function FloatingCube() {
 function Home() {
   return (
     <>
-      <header style={{ padding: '1rem', background: '#222', color: '#fff' }}>
-        <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-          <div style={{ fontWeight: 700 }}>GridfinityStructure</div>
-          <nav style={{ display:'flex', gap:14 }}>
+      <header className="header">
+        <div className="container" style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+          <div className="brand">GridfinityStructure</div>
+          <nav className="nav">
             <a href="https://github.com/YieldingData/GridfinityStructure" target="_blank" rel="noreferrer">GitHub</a>
-            <Link to="/get-started">Get started</Link>
+            <Link to="/create">Start Creating</Link>
           </nav>
         </div>
       </header>
 
-      <main style={{ padding: '2rem', color: '#cdd6e0' }}>
-        <h1 style={{ marginTop: 0 }}>Design columns, beams, decks & bracing — in your browser</h1>
-        <p>Parametric parts, Gridfinity snapping, and export to STL/STEP. Click “Get started” to see the editor layout.</p>
-        <Link to="/get-started" style={{ display:'inline-block', marginTop: 12, padding: '10px 16px', borderRadius: 10, background:'#00a8ff', color:'#001018' }}>
-          Get started
-        </Link>
+      <main>
+        <section className="hero container">
+          <h1>Design grid-based structures in your browser</h1>
+          <p>Columns, beams, braces and floors with Gridfinity snapping. Export to STL or STEP when you are ready.</p>
+          <div className="buttons">
+            <Link to="/create" className="btn primary">Start Creating</Link>
+            <a className="btn" href="https://github.com/YieldingData/GridfinityStructure" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </section>
+        <section className="container" style={{ paddingTop:24, paddingBottom:40 }}>
+          <img
+            src="https://placehold.co/800x400/png"
+            alt="Interface preview"
+            style={{ width:'100%', borderRadius:14 }}
+          />
+        </section>
       </main>
     </>
   )
 }
 
-function GetStarted() {
+function Create() {
   // Layout: left sidebar + main viewport
   return (
-    <div style={{ height: '100vh', display: 'grid', gridTemplateColumns: '280px 1fr', gridTemplateRows: 'auto 1fr' }}>
+    <div style={{ height: '100vh', display: 'grid', gridTemplateColumns: '260px 1fr', gridTemplateRows: 'auto 1fr' }}>
       {/* Top bar */}
       <header style={{ gridColumn: '1 / -1', padding: '10px 16px', background:'#11161d', color:'#e8f0f8', borderBottom:'1px solid #1f2a36' }}>
-        <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-          <strong>Editor — Get Started</strong>
-          <Link to="/" style={{ color:'#5cc8ff' }}>← Back</Link>
+        <div style={{ display:'flex', gap:8 }}>
+          <button className="btn">Columns</button>
+          <button className="btn">Beams</button>
+          <button className="btn">Braces</button>
+          <button className="btn">Floors</button>
+          <Link to="/export"><button className="btn">Export</button></Link>
         </div>
       </header>
 
       {/* Sidebar */}
-      <aside style={{ borderRight:'1px solid #1f2a36', background:'#0b0f14', color:'#9fb0c3', padding:12 }}>
+      <aside style={{ borderRight:'1px solid #1f2a36', background:'#0b0f14', color:'#9fb0c3', padding:12, overflowY:'auto' }}>
         <h3 style={{ color:'#e8f0f8', marginTop: 8 }}>Tools</h3>
-        <div style={{ display:'grid', gap:10 }}>
-          <button className="btn">Select</button>
-          <button className="btn">Move</button>
-          <button className="btn">Rotate</button>
-          <button className="btn">Scale</button>
-        </div>
-
-        <h3 style={{ color:'#e8f0f8', marginTop: 18 }}>Add</h3>
-        <div style={{ display:'grid', gap:10 }}>
-          <button className="btn">Column</button>
-          <button className="btn">Beam</button>
-          <button className="btn">Deck</button>
-          <button className="btn">Bracing</button>
-        </div>
-
-        <h3 style={{ color:'#e8f0f8', marginTop: 18 }}>Gridfinity</h3>
-        <div style={{ fontSize: 13 }}>
-          <div>Unit: 42 × 42 × 7 mm</div>
-          <div>Snap: ¼ unit</div>
-        </div>
+        <label style={{ display:'block', marginBottom:8 }}>Grid unit size:
+          <input type="number" style={{ width:'100%', marginTop:4 }} />
+        </label>
+        <label style={{ display:'block', marginBottom:8 }}>Location x:
+          <input type="number" style={{ width:'100%', marginTop:4 }} />
+        </label>
+        <label style={{ display:'block', marginBottom:8 }}>Location y:
+          <input type="number" style={{ width:'100%', marginTop:4 }} />
+        </label>
+        <label style={{ display:'block', marginBottom:8 }}>Build plate size:
+          <input type="number" style={{ width:'100%', marginTop:4 }} />
+        </label>
+        <label style={{ display:'block', marginBottom:8 }}>Custom size:
+          <input type="number" style={{ width:'100%', marginTop:4 }} />
+        </label>
+        <label style={{ display:'block', marginBottom:8 }}>
+          <input type="checkbox" /> Base magnets
+        </label>
+        <label style={{ display:'block', marginBottom:8 }}>
+          <input type="checkbox" /> Screw holes
+        </label>
+        <label style={{ display:'block', marginBottom:8 }}>
+          <input type="checkbox" /> Connectable
+        </label>
       </aside>
 
       {/* Viewport */}
@@ -111,13 +128,31 @@ function GetStarted() {
   )
 }
 
+function ExportPage() {
+  return (
+    <div className="container" style={{ paddingTop:40 }}>
+      <h1>Export</h1>
+      <p>Prepare your structure for printing.</p>
+      <button className="btn" style={{ marginBottom:20 }}>Make Flat for Printing</button>
+      <div className="buttons" style={{ marginBottom:20 }}>
+        <button className="btn">Export 3D STL</button>
+        <button className="btn">Export 3D STEP</button>
+        <button className="btn">Export Flat STL</button>
+        <button className="btn">Export Flat STEP</button>
+      </div>
+      <Link to="/create">Back to editor</Link>
+    </div>
+  )
+}
+
 // --- App with hash routing (works on GitHub Pages) ---
 export default function App() {
   return (
     <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/get-started" element={<GetStarted />} />
+        <Route path="/create" element={<Create />} />
+        <Route path="/export" element={<ExportPage />} />
       </Routes>
     </HashRouter>
   )
